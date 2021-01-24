@@ -11,7 +11,13 @@ struct FeedView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
-                
+                // LazyVStack - Loads cell as needed, not all at once
+                VStack {
+                    // Displaying a certain amount of Views
+                    ForEach(0..<25) { _ in
+                        TweetCell()
+                    }
+                }
             }
             
             // MARK: - Tweet button
