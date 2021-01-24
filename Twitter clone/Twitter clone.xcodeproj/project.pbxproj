@@ -36,6 +36,7 @@
 		FAD9879C25BCEE1C00AA91FD = {
 			isa = PBXGroup;
 			children = (
+				FAD987B825BCF5C600AA91FD /* Views */,
 				FAD987A725BCEE1C00AA91FD /* Twitter clone */,
 				FAD987A625BCEE1C00AA91FD /* Products */,
 			);
@@ -53,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				FAD987A825BCEE1C00AA91FD /* Twitter_cloneApp.swift */,
-				FAD987AA25BCEE1C00AA91FD /* ContentView.swift */,
 				FAD987AC25BCEE1F00AA91FD /* Assets.xcassets */,
 				FAD987B125BCEE1F00AA91FD /* Info.plist */,
 				FAD987AE25BCEE1F00AA91FD /* Preview Content */,
@@ -67,6 +67,14 @@
 				FAD987AF25BCEE1F00AA91FD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FAD987B825BCF5C600AA91FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAD987AA25BCEE1C00AA91FD /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
