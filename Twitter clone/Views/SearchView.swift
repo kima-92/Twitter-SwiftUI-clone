@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    // MARK: - Properties
+    
+    @State var searchText = ""
+    
+    // MARK: - Body
+    
     var body: some View {
-        Text("My Search View")
+        ScrollView {
+            SearchBar(text: $searchText)
+                .padding()
+            
+            // Cells
+            VStack(alignment: .leading) {
+                ForEach(0..<10) { _ in
+                    HStack { Spacer() }
+                    UserCell()
+                }
+            }.padding(.leading)
+        }
     }
 }
 
