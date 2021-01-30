@@ -24,9 +24,10 @@ struct ConversationCell: View {
                     Text("venom")
                         .font(.system(size: 14, weight: .semibold))
                     Text("Long message text to see what happens when we do this")
-                        .font(.system(size: 15, weight: .semibold))
+                        .font(.system(size: 14))
                         .lineLimit(2)
                 }
+                .foregroundColor(.black)
                 .padding(.trailing)
             }
             Divider()

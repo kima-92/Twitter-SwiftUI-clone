@@ -16,7 +16,11 @@ struct ConversationsView: View {
                 VStack {
                     // Displaying a certain amount of Views
                     ForEach(0..<25) { _ in
-                        ConversationCell()
+                        NavigationLink(
+                            destination: Text("Chat View"),
+                            label: {
+                                ConversationCell()
+                            })
                     }
                 }
             }
