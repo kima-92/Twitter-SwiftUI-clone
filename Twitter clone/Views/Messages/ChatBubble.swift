@@ -14,9 +14,10 @@ struct ChatBubble: Shape {
     var isFromCurrentUser: Bool
     
     // MARK: - Body
+    // Instead of using a View for the body, we will draw the entire chat bubble using the path function from the "Shape" class
     
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight, isFromCurrentUser ? .bottomLeft: .bottomRight], cornerRadii: CGSize(width: 16, height: 16))
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight, isFromCurrentUser ? .bottomLeft : .bottomRight], cornerRadii: CGSize(width: 16, height: 16))
         
         return Path(path.cgPath)
     }
