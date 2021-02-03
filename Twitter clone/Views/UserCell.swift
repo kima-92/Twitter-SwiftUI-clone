@@ -21,7 +21,7 @@ struct UserCell: View {
                 Text("venom")
                     .font(.system(size: 14, weight: .semibold))
                 Text("Eddie Brock")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 14))
             }
         }
     }
