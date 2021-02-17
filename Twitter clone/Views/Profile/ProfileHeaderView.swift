@@ -48,8 +48,11 @@ struct ProfileHeaderView: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
-            }
-            .padding()
+            }.padding()
+            
+            // Edit/Follow/Message buttons - Based on user type
+            ProfileActionButtonView(isCurrentUser: false)
+            
             Spacer()
         }
     }
