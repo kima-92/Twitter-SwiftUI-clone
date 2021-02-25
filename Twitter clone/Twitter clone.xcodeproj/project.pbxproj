@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA00B4A525E5D403006C21AB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00B4A425E5D403006C21AB /* CustomTextField.swift */; };
+		FA00B4A825E6D663006C21AB /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00B4A725E6D663006C21AB /* CustomSecureField.swift */; };
 		FA170E0725C509B2000D7385 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0625C509B2000D7385 /* ConversationsView.swift */; };
 		FA170E0B25C509C7000D7385 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0A25C509C7000D7385 /* ConversationCell.swift */; };
 		FA170E0E25C515C5000D7385 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0D25C515C5000D7385 /* MessageInputView.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		FA00B4A425E5D403006C21AB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FA00B4A725E6D663006C21AB /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		FA170E0625C509B2000D7385 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
 		FA170E0A25C509C7000D7385 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		FA170E0D25C515C5000D7385 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				FA76494425E490BB00471C35 /* TextArea.swift */,
 				FA00B4A425E5D403006C21AB /* CustomTextField.swift */,
+				FA00B4A725E6D663006C21AB /* CustomSecureField.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				FA7AE7BC25CBB0C200D193BD /* NewMessageView.swift in Sources */,
 				FA80393725C7A742008F097D /* Message.swift in Sources */,
 				FA66E1EA25CD0507009C0E65 /* UserProfileView.swift in Sources */,
+				FA00B4A825E6D663006C21AB /* CustomSecureField.swift in Sources */,
 				FA7B89A125BFAC6D00F831CB /* SearchBar.swift in Sources */,
 				FA66E1F025CD0683009C0E65 /* ProfileActionButtonView.swift in Sources */,
 				FA7B89A425BFB3A400F831CB /* UserCell.swift in Sources */,

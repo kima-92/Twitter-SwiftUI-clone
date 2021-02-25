@@ -1,19 +1,18 @@
 //
-//  CustomTextField.swift
+//  CustomSecureField.swift
 //  Twitter clone
 //
-//  Created by macbook on 2/23/21.
+//  Created by macbook on 2/24/21.
 //
 
 import SwiftUI
 
-struct CustomTextField: View {
+struct CustomSecureField: View {
     
     // MARK: - Properties
     
     @Binding var text: String
     let placeholder: Text
-    let imageName: String
     
     // MARK: - Body
     
@@ -26,20 +25,21 @@ struct CustomTextField: View {
             }
             
             HStack(spacing:16) {
-                Image(systemName: imageName)
+                Image(systemName: "lock")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(.white)
                 
-                TextField("", text: $text)
+                // Making the textFiled secure
+                SecureField("", text: $text)
             }
         }
     }
 }
 
-struct CustomTextField_Previews: PreviewProvider {
+struct CustomSecureField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextField(text: .constant(""), placeholder: Text("Email"), imageName: "envelope")
+        CustomSecureField(text: .constant(""), placeholder: Text("Placeholder"))
     }
 }
