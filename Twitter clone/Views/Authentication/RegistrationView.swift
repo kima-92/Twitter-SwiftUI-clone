@@ -15,19 +15,22 @@ struct RegistrationView: View {
     @State var username = ""
     @State var email = ""
     @State var password = ""
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     // MARK: - Body
     
     var body: some View {
         ZStack {
             VStack {
-                // Logo
-                Image("twitter-logo")
+                // Profile Photo Placeholder
+                Image("plus_photo")
                     .resizable()
+                    .renderingMode(.template) // allows us to give it a foreground color
                     .scaledToFill()
-                    .frame(width: 220, height: 100)
+                    .frame(width: 140, height: 140)
                     .padding(.top, 88)
                     .padding(.bottom, 32)
+                    .foregroundColor(.white)
                 
                 // CustomTextFields
                 VStack(spacing: 20) {
@@ -70,14 +73,18 @@ struct RegistrationView: View {
                 
                 // Sign in Bottom section
                 Spacer()
-                HStack {
-                    Text("Already have an account?")
-                        .font(.system(size: 14))
-                    Text("Sign in")
-                        .font(.system(size: 14, weight: .semibold))
-                }
-                .foregroundColor(.white)
-                .padding(.bottom, 40)
+                
+                Button(action: { mode.wrappedValue.dismiss() }, label: {
+                    
+                    HStack {
+                        Text("Already have an account?")
+                            .font(.system(size: 14))
+                        Text("Sign in")
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .foregroundColor(.white)
+                    .padding(.bottom, 40)
+                })
             }
         }
         .background(Color(#colorLiteral(red: 0.1137254902, green: 0.6328891516, blue: 0.952801168, alpha: 1)))  // Color Literal
@@ -90,3 +97,9 @@ struct RegistrationView_Previews: PreviewProvider {
         RegistrationView()
     }
 }
+
+/*
+ An Enviroment variable (in this case: "mode") uses a view's state as a variable.
+ So we can call dismiss on it's navigationLink
+ Need more info on this*
+ */
