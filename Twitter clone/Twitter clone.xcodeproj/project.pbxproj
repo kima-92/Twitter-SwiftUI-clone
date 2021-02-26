@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA00B4A525E5D403006C21AB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00B4A425E5D403006C21AB /* CustomTextField.swift */; };
 		FA00B4A825E6D663006C21AB /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00B4A725E6D663006C21AB /* CustomSecureField.swift */; };
+		FA00B4AB25E955B8006C21AB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00B4AA25E955B8006C21AB /* ImagePicker.swift */; };
 		FA170E0725C509B2000D7385 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0625C509B2000D7385 /* ConversationsView.swift */; };
 		FA170E0B25C509C7000D7385 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0A25C509C7000D7385 /* ConversationCell.swift */; };
 		FA170E0E25C515C5000D7385 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA170E0D25C515C5000D7385 /* MessageInputView.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		FA00B4A425E5D403006C21AB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		FA00B4A725E6D663006C21AB /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		FA00B4AA25E955B8006C21AB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		FA170E0625C509B2000D7385 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
 		FA170E0A25C509C7000D7385 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		FA170E0D25C515C5000D7385 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				FA76494325E4909E00471C35 /* HelperViews */,
+				FA00B4AA25E955B8006C21AB /* ImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				FA7B899E25BFABCD00F831CB /* SearchView.swift in Sources */,
 				FA170E0E25C515C5000D7385 /* MessageInputView.swift in Sources */,
 				FAD987AB25BCEE1C00AA91FD /* ContentView.swift in Sources */,
+				FA00B4AB25E955B8006C21AB /* ImagePicker.swift in Sources */,
 				FAFF80C325BD017D0013E2AA /* FeedView.swift in Sources */,
 				FA76494A25E496D300471C35 /* LoginView.swift in Sources */,
 				FA66E1ED25CD065D009C0E65 /* ProfileHeaderView.swift in Sources */,

@@ -11,7 +11,8 @@ import SwiftUI
 struct Twitter_cloneApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            LoginView()
         }
     }
 }
