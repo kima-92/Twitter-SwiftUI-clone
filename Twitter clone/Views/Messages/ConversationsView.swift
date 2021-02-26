@@ -12,11 +12,17 @@ struct ConversationsView: View {
     // MARK: - Properties
     
     @State var isShowingNewMessageView = false
+    @State var showChat = false
     
     // MARK: - Body
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
+            NavigationLink( destination: ChatView(),
+                            isActive: $showChat,
+                            label: {})
+            
+            // Cells
             ScrollView {
                 
                 // MARK: - Cells
@@ -45,7 +51,7 @@ struct ConversationsView: View {
             .clipShape(Circle())
             .padding()
             .sheet(isPresented: $isShowingNewMessageView, content: {
-                SearchView()
+                NewMessageView(show: $isShowingNewMessageView, startChat: $showChat)
             })
         }
     }
