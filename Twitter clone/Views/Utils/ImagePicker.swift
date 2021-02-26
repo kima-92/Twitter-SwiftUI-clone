@@ -9,6 +9,13 @@ import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
+    // MARK: - Properties
+    
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var mode
+    
+    // MARK: - Methods
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -17,6 +24,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
         return picker
     }
     
@@ -42,6 +50,9 @@ extension ImagePicker {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             // Method that gets executed when an image gets selected from the Image Picker
              
+            guard let image = info[.originalImage] as? UIImage else { return }
+            parent.image = image
+            parent.mode.wrappedValue.dismiss()
         }
     }
 }
@@ -61,4 +72,7 @@ extension ImagePicker {
  
     - The Coordinator helps fill the gap between UIKit and SwiftUI
         - Need more info on this..
+ 
+    - The parent variable in the Coordinator:
+        - It refers to the parent view of the ImagePicker (this UIViewControllerRepresentable)
  */

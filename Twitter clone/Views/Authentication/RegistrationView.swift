@@ -15,6 +15,10 @@ struct RegistrationView: View {
     @State var username = ""
     @State var email = ""
     @State var password = ""
+    
+    @State var selectedUIImage: UIImage?
+    @State var image: Image?
+
     @State var showImagePicker = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -23,18 +27,36 @@ struct RegistrationView: View {
     var body: some View {
         ZStack {
             VStack {
-                // Profile Photo Placeholder
+                
+                // Profile Photo Section
                 Button(action: { showImagePicker.toggle() }, label: {
-                    Image("plus_photo")
-                        .resizable()
-                        .renderingMode(.template) // allows us to give it a foreground color
-                        .scaledToFill()
-                        .frame(width: 140, height: 140)
-                        .padding(.top, 88)
-                        .padding(.bottom, 32)
-                        .foregroundColor(.white)
-                }).sheet(isPresented: $showImagePicker, content: {
-                    ImagePicker()
+                    ZStack {
+                        if let image = image {
+                            // Display the selected Image
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .clipped()
+                                .cornerRadius(70)
+                                .padding(.top, 88)
+                                .padding(.bottom, 32)
+                        } else {
+                            // Display Placeholder
+                            Image("plus_photo")
+                                .resizable()
+                                .renderingMode(.template) // allows us to give it a foreground color
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .padding(.top, 88)
+                                .padding(.bottom, 32)
+                                .foregroundColor(.white)
+                        }
+                    }
+                })
+                // Displaying ImagePicker
+                .sheet(isPresented: $showImagePicker, onDismiss: loadImage, content: {
+                    ImagePicker(image: $selectedUIImage)
                 })
                 
                 // CustomTextFields
@@ -94,6 +116,14 @@ struct RegistrationView: View {
         }
         .background(Color(#colorLiteral(red: 0.1137254902, green: 0.6328891516, blue: 0.952801168, alpha: 1)))  // Color Literal
         .ignoresSafeArea()
+    }
+    
+    // MARK: - Methods
+    
+    // Convert the UIKit UIImage to a SwiftUI Image
+    private func loadImage() {
+        guard let selectedUIImage = selectedUIImage else { return }
+        image = Image(uiImage: selectedUIImage)
     }
 }
 
