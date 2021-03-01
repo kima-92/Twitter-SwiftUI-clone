@@ -120,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				FA76494325E4909E00471C35 /* HelperViews */,
-				FA00B4AA25E955B8006C21AB /* ImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -128,6 +127,7 @@
 		FA76494325E4909E00471C35 /* HelperViews */ = {
 			isa = PBXGroup;
 			children = (
+				FA00B4AA25E955B8006C21AB /* ImagePicker.swift */,
 				FA76494425E490BB00471C35 /* TextArea.swift */,
 				FA00B4A425E5D403006C21AB /* CustomTextField.swift */,
 				FA00B4A725E6D663006C21AB /* CustomSecureField.swift */,
