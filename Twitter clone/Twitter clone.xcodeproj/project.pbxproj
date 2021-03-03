@@ -34,6 +34,7 @@
 		FA9BAC8825EDF6F700B8114B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9BAC8725EDF6F700B8114B /* FirebaseStorage */; };
 		FA9BAC8A25EDF6F700B8114B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9BAC8925EDF6F700B8114B /* FirebaseAuth */; };
 		FA9BAC8C25EDF6F700B8114B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9BAC8B25EDF6F700B8114B /* FirebaseFirestore */; };
+		FA9C0DB225EF3FBF00434324 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9C0DB125EF3FBF00434324 /* AuthViewModel.swift */; };
 		FAD987A925BCEE1C00AA91FD /* Twitter_cloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD987A825BCEE1C00AA91FD /* Twitter_cloneApp.swift */; };
 		FAD987AB25BCEE1C00AA91FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD987AA25BCEE1C00AA91FD /* ContentView.swift */; };
 		FAD987AD25BCEE1F00AA91FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD987AC25BCEE1F00AA91FD /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		FA80393625C7A742008F097D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FA80393925C7AEC3008F097D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FA9BAC8125EDF55E00B8114B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA9C0DB125EF3FBF00434324 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		FAD987A525BCEE1C00AA91FD /* Twitter clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD987A825BCEE1C00AA91FD /* Twitter_cloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twitter_cloneApp.swift; sourceTree = "<group>"; };
 		FAD987AA25BCEE1C00AA91FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,11 +164,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FA9C0DB025EF3F9300434324 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA9C0DB125EF3FBF00434324 /* AuthViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		FAD9879C25BCEE1C00AA91FD = {
 			isa = PBXGroup;
 			children = (
 				FA80393525C7A72C008F097D /* Models */,
 				FAD987B825BCF5C600AA91FD /* Views */,
+				FA9C0DB025EF3F9300434324 /* View Models */,
 				FADAD5AD25DE2B7E00079583 /* Helpers */,
 				FAD987A725BCEE1C00AA91FD /* Twitter clone */,
 				FAD987A625BCEE1C00AA91FD /* Products */,
@@ -330,6 +341,7 @@
 				FA00B4A825E6D663006C21AB /* CustomSecureField.swift in Sources */,
 				FA7B89A125BFAC6D00F831CB /* SearchBar.swift in Sources */,
 				FA66E1F025CD0683009C0E65 /* ProfileActionButtonView.swift in Sources */,
+				FA9C0DB225EF3FBF00434324 /* AuthViewModel.swift in Sources */,
 				FA7B89A425BFB3A400F831CB /* UserCell.swift in Sources */,
 				FA80393A25C7AEC3008F097D /* MessageView.swift in Sources */,
 				FA170E0B25C509C7000D7385 /* ConversationCell.swift in Sources */,
