@@ -10,7 +10,31 @@ import Firebase
 
 class AuthViewModel: ObservableObject {
     
-    func login() {
+    // MARK: - Properties
+    
+    @Published var user: User?
+    @Published var userSession: FirebaseAuth.User?  // Will keep track of wether the user is logged in
+    @Published var isAuthenticating = false         // Keep track of wether the user is being authenticated
+    @Published var error: Error?                    // Track error if we get one, to later display for the user
+    
+    // MARK: - Initializer
+    
+    init() {
+        userSession = Auth.auth().currentUser
+    }
+    
+    // MARK: - Authorization Methods
+    
+    // Login
+    func login(withEmail email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            
+            if let error = error {
+                print("DEBUG: Failed to login: \(error.localizedDescription)")
+                return
+            }
+            print("DEBUG: Successfully logged in")
+        }
     }
     
     // Register user in Firebase
@@ -28,7 +52,7 @@ class AuthViewModel: ObservableObject {
         // Store the Image Data
         storageRef.putData(imageData, metadata: nil) { _, error in
             if let error = error {
-                print("DEBUG: Failedto upload image \(error.localizedDescription)")
+                print("DEBUG: Failed to upload image \(error.localizedDescription)")
                 return
             }
             print("DEBUG: Successfully uploaded user profilePhoto")
@@ -61,5 +85,11 @@ class AuthViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    // Log out
+    func signOut() {
+        userSession = nil
+        try? Auth.auth().signOut()
     }
 }

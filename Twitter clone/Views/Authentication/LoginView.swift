@@ -14,6 +14,8 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     
+    @ObservedObject var viewModel = AuthViewModel()
+    
     // MARK: - Body
     
     var body: some View {
@@ -58,7 +60,9 @@ struct LoginView: View {
                     }
                     
                     // Sign in Button
-                    Button(action: {}, label: {
+                    Button(action: {
+                        viewModel.login(withEmail: email, password: password)
+                    }, label: {
                         Text("Sign in")
                             .font(.headline)
                             .foregroundColor(.blue)
