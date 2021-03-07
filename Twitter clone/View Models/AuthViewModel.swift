@@ -33,7 +33,7 @@ class AuthViewModel: ObservableObject {
                 print("DEBUG: Failed to login: \(error.localizedDescription)")
                 return
             }
-            print("DEBUG: Successfully logged in")
+            self.userSession = result?.user
         }
     }
     
@@ -72,7 +72,7 @@ class AuthViewModel: ObservableObject {
                     guard let user = result?.user else { return }
                     
                     let data = ["email": email,
-                                "username": username,
+                                "username": username.lowercased(),
                                 "fullname": fullname,
                                 "profileImage": profileImageUrl,
                                 "uid": user.uid
@@ -80,7 +80,7 @@ class AuthViewModel: ObservableObject {
                     
                     // Store this user in our "user" collection in Firestore along with it's properties
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
-                        print("DEBUG: Successfully uploaded user data")
+                        self.userSession = user
                     }
                 }
             }

@@ -18,7 +18,8 @@ struct ContentView: View {
     var body: some View {
         Group {
             
-            // If user is Logged in
+            // Display the Main User interface
+            // if the user is Logged In
             if viewModel.userSession != nil {
                 NavigationView {
                     TabView {
@@ -46,7 +47,7 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                 }
             } else {
-                // If User is logged out
+                // If User is logged out, display the LoginView
                 LoginView()
             }
         }

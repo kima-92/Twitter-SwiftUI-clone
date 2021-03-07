@@ -14,7 +14,7 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     
-    @ObservedObject var viewModel = AuthViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
     
     // MARK: - Body
     

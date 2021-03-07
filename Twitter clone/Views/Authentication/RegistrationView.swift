@@ -21,7 +21,7 @@ struct RegistrationView: View {
     @State var image: Image?
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @ObservedObject var viewModel = AuthViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
     
     // MARK: - Body
     
