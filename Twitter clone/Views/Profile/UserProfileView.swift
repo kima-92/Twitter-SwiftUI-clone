@@ -12,13 +12,14 @@ struct UserProfileView: View {
     // MARK: - Properties
     
     @State var selectedFilter: TweetFilterOptions = .tweets
+    let user: User
     
     // MARK: - Body
     
     var body: some View {
         ScrollView {
             VStack {
-                ProfileHeaderView()
+                ProfileHeaderView(user: user)
                     .padding()
                 
                 FilterButtonView(selectedOption: $selectedFilter)
@@ -33,8 +34,8 @@ struct UserProfileView: View {
     }
 }
 
-struct UserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserProfileView()
-    }
-}
+//struct UserProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserProfileView()
+//    }
+//}
