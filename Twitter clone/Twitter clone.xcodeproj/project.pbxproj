@@ -19,6 +19,7 @@
 		FA66E1ED25CD065D009C0E65 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66E1EC25CD065D009C0E65 /* ProfileHeaderView.swift */; };
 		FA66E1F025CD0683009C0E65 /* ProfileActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66E1EF25CD0683009C0E65 /* ProfileActionButtonView.swift */; };
 		FA66E1F325CD0695009C0E65 /* FilterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66E1F225CD0695009C0E65 /* FilterButtonView.swift */; };
+		FA6F338125F5888A004A24A9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F338025F5888A004A24A9 /* User.swift */; };
 		FA76493F25E48AEC00471C35 /* NewTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76493E25E48AEC00471C35 /* NewTweetView.swift */; };
 		FA76494525E490BB00471C35 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76494425E490BB00471C35 /* TextArea.swift */; };
 		FA76494A25E496D300471C35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76494925E496D300471C35 /* LoginView.swift */; };
@@ -57,6 +58,7 @@
 		FA66E1EC25CD065D009C0E65 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		FA66E1EF25CD0683009C0E65 /* ProfileActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionButtonView.swift; sourceTree = "<group>"; };
 		FA66E1F225CD0695009C0E65 /* FilterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonView.swift; sourceTree = "<group>"; };
+		FA6F338025F5888A004A24A9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA76493E25E48AEC00471C35 /* NewTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetView.swift; sourceTree = "<group>"; };
 		FA76494425E490BB00471C35 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		FA76494925E496D300471C35 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FA80393625C7A742008F097D /* Message.swift */,
+				FA6F338025F5888A004A24A9 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				FA76494A25E496D300471C35 /* LoginView.swift in Sources */,
 				FA66E1ED25CD065D009C0E65 /* ProfileHeaderView.swift in Sources */,
 				FA170E1125C516C9000D7385 /* ChatView.swift in Sources */,
+				FA6F338125F5888A004A24A9 /* User.swift in Sources */,
 				FADAD5AF25DE2B9700079583 /* TweetFilterOptions.swift in Sources */,
 				FA76493F25E48AEC00471C35 /* NewTweetView.swift in Sources */,
 				FA00B4A525E5D403006C21AB /* CustomTextField.swift in Sources */,
