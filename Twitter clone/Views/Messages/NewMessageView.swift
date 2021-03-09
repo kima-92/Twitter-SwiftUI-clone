@@ -15,6 +15,8 @@ struct NewMessageView: View {
     @Binding var show: Bool
     @Binding var startChat: Bool
     
+    @ObservedObject var viewModel = SearchViewModel()
+    
     // MARK: - Body
     
     var body: some View {
@@ -24,14 +26,14 @@ struct NewMessageView: View {
             
             // Cells (Buttons)
             VStack(alignment: .leading) {
-                ForEach(0..<10) { _ in
+                ForEach(viewModel.users) { user in
                     HStack { Spacer() }
                     
                     Button(action: {
                         self.show.toggle()
                         self.startChat.toggle()
                     }, label: {
-                        UserCell()
+                        UserCell(user: user)
                     })
                 }
             }.padding(.leading)
