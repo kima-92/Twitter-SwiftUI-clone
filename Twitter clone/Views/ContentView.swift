@@ -8,31 +8,48 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: - Properties
+    
+    @EnvironmentObject var viewModel: AuthViewModel
+    
+    // MARK: - Body
+    
     var body: some View {
-        NavigationView {
-            TabView {
-                // Home Tab
-                FeedView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
+        Group {
+            
+            // Display the Main User interface
+            // if the user is Logged In
+            if viewModel.userSession != nil {
+                NavigationView {
+                    TabView {
+                        // Home Tab
+                        FeedView()
+                            .tabItem {
+                                Image(systemName: "house")
+                                Text("Home")
+                            }
+                        // Search Tab
+                        SearchView()
+                            .tabItem {
+                                Image(systemName: "magnifyingglass")
+                                Text("Search")
+                            }
+                        // Messages Tab
+                        ConversationsView()
+                            .tabItem {
+                                Image(systemName: "envelope")
+                                Text("Messages")
+                            }
                     }
-                // Search Tab
-                SearchView()
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
-                    }
-                // Messages Tab
-                ConversationsView()
-                    .tabItem {
-                        Image(systemName: "envelope")
-                        Text("Messages")
-                    }
+                    // Bar title
+                    .navigationBarTitle("Home")
+                    .navigationBarTitleDisplayMode(.inline)
+                }
+            } else {
+                // If User is logged out, display the LoginView
+                LoginView()
             }
-            // Bar title
-            .navigationBarTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

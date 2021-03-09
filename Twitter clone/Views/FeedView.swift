@@ -12,6 +12,7 @@ struct FeedView: View {
     // MARK: - Properties
     
     @State var isShowingNewTweetView = false
+    @EnvironmentObject var viewModel: AuthViewModel
     
     // MARK: - Body
     
@@ -28,7 +29,14 @@ struct FeedView: View {
             }
             
             // MARK: - Tweet button
-            Button(action: { isShowingNewTweetView.toggle() }, label: {
+            Button(action: {
+                // TODO: - REMOVE THIS SIGNOUT METHOD FROM THIS BUTTON
+                
+                // Temporarily signin out from the tweet button, for testing purposes
+                viewModel.signOut()
+//                    isShowingNewTweetView.toggle()
+                
+            }, label: {
                 Image("Tweet")
                     .resizable()
                     .renderingMode(.template)
