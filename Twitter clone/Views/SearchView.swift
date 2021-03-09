@@ -12,6 +12,7 @@ struct SearchView: View {
     // MARK: - Properties
     
     @State var searchText = ""
+    @ObservedObject var viewModel = SearchViewModel()
     
     // MARK: - Body
     
@@ -22,12 +23,12 @@ struct SearchView: View {
             
             // Cells
             VStack(alignment: .leading) {
-                ForEach(0..<10) { _ in
+                ForEach(viewModel.users) { user in
                     HStack { Spacer() }
                     NavigationLink(
-                        destination: UserProfileView(),
+                        destination: UserProfileView(user: user),
                         label: {
-                            UserCell()
+                            UserCell(user: user)
                         })
                 }
             }.padding(.leading)
