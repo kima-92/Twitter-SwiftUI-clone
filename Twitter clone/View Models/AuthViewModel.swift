@@ -21,6 +21,7 @@ class AuthViewModel: ObservableObject {
     
     init() {
         userSession = Auth.auth().currentUser
+        fetchUser()
     }
     
     // MARK: - Authorization Methods
@@ -91,5 +92,29 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
+    }
+    
+    // MARK: - Methods
+    
+    func fetchUser() {
+        guard let uid = userSession?.uid else { return }
+        
+        // Fetching this user by ID in the "users" collection - Firestore
+        let userCollection = Firestore.firestore().collection("users")
+        let userDocument = userCollection.document(uid)
+        
+        // Creating the User model after fetching
+        userDocument.getDocument { (snapshot, error) in
+            
+            if let error = error {
+                print("DEBUG: Error fetching logged in user: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = snapshot?.data() else { return }
+            
+            let user = User(dictionary: data)
+            print("DEBUG: User is \(user.username)")
+        }
     }
 }
