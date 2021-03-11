@@ -13,13 +13,21 @@ struct UserProfileView: View {
     
     @State var selectedFilter: TweetFilterOptions = .tweets
     let user: User
+    @ObservedObject var viewModel: ProfileViewModel
+    
+    // MARK: - Initializer
+    
+    init(user: User) {
+        self.user = user
+        self.viewModel = ProfileViewModel(user: user)
+    }
     
     // MARK: - Body
     
     var body: some View {
         ScrollView {
             VStack {
-                ProfileHeaderView(user: user)
+                ProfileHeaderView(viewModel: viewModel, isFollowed: $viewModel.isFollowed)
                     .padding()
                 
                 FilterButtonView(selectedOption: $selectedFilter)
