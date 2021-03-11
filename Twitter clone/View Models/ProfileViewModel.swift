@@ -23,18 +23,38 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - Methods
     
+    // Follow this profile's user
     func follow() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
-        COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(user.id).setData([:]) { error in
-            COLLECTION_FOLLOWERS.document(self.user.id).collection("user-followers").document(currentUid).setData([:]) { error in
+        // Reference to the current user's following collection in Firebase
+        let followingCollectionRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
+        // Reference to this profile's user's followers collection in Firebase
+        let followersCollectionRef = COLLECTION_FOLLOWERS.document(self.user.id).collection("user-followers")
+        
+        // Creating user document inside corresponding collections
+        followingCollectionRef.document(user.id).setData([:]) { error in
+            followersCollectionRef.document(currentUid).setData([:]) { error in
                 self.isFollowed = true
             }
         }
     }
     
+    // Unfollow this profile's user
     func unfollow() {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
+        // Reference to the current user's following collection in Firebase
+        let followingCollectionRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
+        // Reference to this profile's user's followers collection in Firebase
+        let followersCollectionRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
+        
+        // Deleting user document from corresponding collections
+        followingCollectionRef.document(user.id).delete() { error in
+            followersCollectionRef.document(currentUid).delete { error in
+                self.isFollowed = false
+            }
+        }
     }
 }
 
