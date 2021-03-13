@@ -56,6 +56,19 @@ class ProfileViewModel: ObservableObject {
             }
         }
     }
+    
+    // Check if this profile's user is being followed by the current user
+    func checkIfUserIsFollowed() {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        // Reference to the current user's following collection in Firebase
+        let followingCollectionRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
+        
+        followingCollectionRef.document(user.id).getDocument { documentSnapshot, error in
+            guard let isFollowed = documentSnapshot?.exists else { return }
+            self.isFollowed = isFollowed
+        }
+    }
 }
 
 /*
