@@ -19,6 +19,7 @@ class ProfileViewModel: ObservableObject {
     
     init(user: User) {
         self.user = user
+        checkIfUserIsFollowed()
     }
     
     // MARK: - Methods
@@ -58,7 +59,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     // Check if this profile's user is being followed by the current user
-    func checkIfUserIsFollowed() {
+    private func checkIfUserIsFollowed() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
         // Reference to the current user's following collection in Firebase
