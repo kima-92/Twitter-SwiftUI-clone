@@ -29,14 +29,8 @@ struct FeedView: View {
             }
             
             // MARK: - Tweet button
-            Button(action: {
-                // TODO: - REMOVE THIS SIGNOUT METHOD FROM THIS BUTTON
-                
-                // Temporarily signin out from the tweet button, for testing purposes
-                viewModel.signOut()
-//                    isShowingNewTweetView.toggle()
-                
-            }, label: {
+            Button(action: { isShowingNewTweetView.toggle() },
+                   label: {
                 Image("Tweet")
                     .resizable()
                     .renderingMode(.template)
