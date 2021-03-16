@@ -14,6 +14,7 @@ struct NewTweetView: View {
     
     @Binding var isPresented: Bool
     @State var captionText: String = ""
+    @ObservedObject var viewModel = UploadTweetViewModel()
     
     // MARK: - Body
     
@@ -21,7 +22,7 @@ struct NewTweetView: View {
         NavigationView {
             VStack {
                 HStack(alignment: .top) {
-                    
+                    // Profile Image
                     if let user = AuthViewModel.shared.user {
                         
                         KFImage(URL(string: user.profileImageUrl))
@@ -36,21 +37,27 @@ struct NewTweetView: View {
                     Spacer()
                 }
                 .padding()
-                .navigationBarItems(leading:
-                                        Button(action: { isPresented.toggle()
-                                        }, label: {
-                                            Text("Cancel")
-                                                .foregroundColor(.blue)
-                                        }),
-                                    trailing: Button(action: {}, label: {
-                                        Text("Tweet")
-                                            .padding(.horizontal)
-                                            .padding(.vertical, 8)
-                                            .background(Color.blue)
-                                            .foregroundColor(.white)
-                                            .clipShape(Capsule())
-                                }))
-                
+                .navigationBarItems(
+                    
+                    // Cancel Button
+                    leading:
+                        Button(action: { isPresented.toggle()
+                        }, label: {
+                            Text("Cancel")
+                                .foregroundColor(.blue)
+                        }),
+                    
+                    // Tweet Button
+                    trailing: Button(action: {
+                        viewModel.uploadTweet(caption: captionText)
+                    }, label: {
+                        Text("Tweet")
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
+                    }))
                 Spacer()
             }
         }
