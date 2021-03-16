@@ -14,7 +14,14 @@ struct NewTweetView: View {
     
     @Binding var isPresented: Bool
     @State var captionText: String = ""
-    @ObservedObject var viewModel = UploadTweetViewModel()
+    @ObservedObject var viewModel: UploadTweetViewModel
+    
+    // MARK: - Init
+    
+    init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
+        self.viewModel = UploadTweetViewModel(isPresented: isPresented)
+    }
     
     // MARK: - Body
     
