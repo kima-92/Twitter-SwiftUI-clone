@@ -17,6 +17,9 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticating = false         // Keep track of wether the user is being authenticated
     @Published var error: Error?                    // Track error if we get one, to later display for the user
     
+    // Shared constant mainly to quickly access the user property
+    static let shared = AuthViewModel()
+    
     // MARK: - Initializer
     
     init() {
