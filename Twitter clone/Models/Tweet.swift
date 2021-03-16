@@ -8,7 +8,7 @@
 import Firebase
 
 struct Tweet: Identifiable {
-    let id: String  // Actually NEEDED to confirm to the Identifiable protocol
+    let id: String  // NEEDED to conform to the Identifiable protocol
     let username: String
     let profileImageUrl: String
     let fullname: String
@@ -18,9 +18,9 @@ struct Tweet: Identifiable {
     let timestamp: Timestamp
     
     init(dictionary: [String: Any]) {
-        self.id = dictionary["uid"] as? String ?? ""
+        self.id = dictionary["id"] as? String ?? ""
         self.username = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImage"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.fullname = dictionary["fullname"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
         self.likes = dictionary["likes"] as? Int ?? 0

@@ -12,7 +12,7 @@ struct FeedView: View {
     // MARK: - Properties
     
     @State var isShowingNewTweetView = false
-    @EnvironmentObject var viewModel: AuthViewModel
+    @ObservedObject var viewModel = FeedViewModel()
     
     // MARK: - Body
     
@@ -22,8 +22,8 @@ struct FeedView: View {
                 // LazyVStack - Loads cell as needed, not all at once
                 VStack {
                     // Displaying a certain amount of Views
-                    ForEach(0..<25) { _ in
-                        TweetCell()
+                    ForEach(viewModel.tweets) { tweet in
+                        TweetCell(tweet: tweet)
                     }
                 }
             }
