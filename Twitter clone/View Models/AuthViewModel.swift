@@ -35,6 +35,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             self.userSession = result?.user
+            self.fetchUser()
         }
     }
     
@@ -53,10 +54,9 @@ class AuthViewModel: ObservableObject {
         // Store the Image Data
         storageRef.putData(imageData, metadata: nil) { _, error in
             if let error = error {
-                print("DEBUG: Failed to upload image \(error.localizedDescription)")
+                print("DEBUG: Failed to upload profile image for newly registered user \(error.localizedDescription)")
                 return
             }
-            print("DEBUG: Successfully uploaded user profilePhoto")
             
             // Get the URL for this image
             storageRef.downloadURL { (url, _) in
@@ -82,6 +82,7 @@ class AuthViewModel: ObservableObject {
                     // Store this user in our "user" collection in Firestore along with it's properties
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                         self.userSession = user
+                        self.fetchUser()
                     }
                 }
             }
@@ -94,8 +95,9 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
-    // MARK: - Methods
+    // MARK: - Other Methods
     
+    // Fetching the user from Firestore
     func fetchUser() {
         guard let uid = userSession?.uid else { return }
         
