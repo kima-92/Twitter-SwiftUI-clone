@@ -11,7 +11,8 @@ struct ProfileActionButtonView: View {
     
     // MARK: - Properties
     
-    let isCurrentUser: Bool
+    let viewModel: ProfileViewModel
+    @Binding var isFollowed: Bool
     
     // MARK: - Body
     
@@ -19,7 +20,7 @@ struct ProfileActionButtonView: View {
         
         // Display the Edit button if user is at their own profile
         // if not, display the Follow/Message buttons
-        if isCurrentUser {
+        if viewModel.user.isCurrentUser {
             
             // Edit button
             Button(action: {}, label: {
@@ -30,15 +31,20 @@ struct ProfileActionButtonView: View {
             }).cornerRadius(20)
             
         } else {
-            // Follow/Message buttons
+            // Buttons
             HStack {
-                Button(action: {}, label: {
-                    Text("Follow")
+                
+                // Follow/Unfollow Button
+                Button(action: {
+                    isFollowed ? viewModel.unfollow() : viewModel.follow()
+                }, label: {
+                    Text(isFollowed ? "Following" : "Follow")
                         .frame(width: 180, height: 40)
                         .background(Color.blue)
                         .foregroundColor(.white)
                 }).cornerRadius(20)
                 
+                // Message Button
                 Button(action: {}, label: {
                     Text("Message")
                         .frame(width: 180, height: 40)
@@ -52,6 +58,6 @@ struct ProfileActionButtonView: View {
 
 struct ProfileActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileActionButtonView(isCurrentUser: false)
+        ProfileActionButtonView(viewModel: ProfileViewModel(user: User(dictionary: [:])), isFollowed: Binding.constant(true))
     }
 }

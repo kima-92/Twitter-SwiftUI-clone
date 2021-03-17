@@ -12,7 +12,9 @@ struct ProfileHeaderView: View {
     
     // MARK: - Properties
     
-    let user: User
+    let viewModel: ProfileViewModel
+    @Binding var isFollowed: Bool
+    
     // TODO: - Check if you trully need this state variable here
     //    @State var selectedFilter: TweetFilterOptions = .tweets
     
@@ -21,7 +23,7 @@ struct ProfileHeaderView: View {
     var body: some View {
         VStack {
             // Profile Picture
-            KFImage(URL(string: user.profileImageUrl))
+            KFImage(URL(string: viewModel.user.profileImageUrl))
                 .resizable()
                 .scaledToFill()
                 .clipped()
@@ -30,11 +32,11 @@ struct ProfileHeaderView: View {
                 .shadow(color: .black, radius: 6, x: 0.0, y: 0.0)
             
             // User Details
-            Text(user.fullname)
+            Text(viewModel.user.fullname)
                 .font(.system(size: 16, weight: .semibold))
                 .padding(.top, 8)
             
-            Text("@\(user.username)")
+            Text("@\(viewModel.user.username)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -61,7 +63,7 @@ struct ProfileHeaderView: View {
             }.padding()
             
             // Edit/Follow/Message buttons - Based on user type
-            ProfileActionButtonView(isCurrentUser: user.isCurrentUser)
+            ProfileActionButtonView(viewModel: viewModel, isFollowed: $isFollowed)
             
             // TODO: - Check if you trully need the FilterButtonView here
             //            FilterButtonView(selectedOption: $selectedFilter).padding()

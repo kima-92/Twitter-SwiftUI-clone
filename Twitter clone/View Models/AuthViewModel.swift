@@ -17,6 +17,9 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticating = false         // Keep track of wether the user is being authenticated
     @Published var error: Error?                    // Track error if we get one, to later display for the user
     
+    // Shared constant mainly to quickly access the user property
+    static let shared = AuthViewModel()
+    
     // MARK: - Initializer
     
     init() {
@@ -35,6 +38,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             self.userSession = result?.user
+            self.fetchUser()
         }
     }
     
@@ -53,10 +57,9 @@ class AuthViewModel: ObservableObject {
         // Store the Image Data
         storageRef.putData(imageData, metadata: nil) { _, error in
             if let error = error {
-                print("DEBUG: Failed to upload image \(error.localizedDescription)")
+                print("DEBUG: Failed to upload profile image for newly registered user \(error.localizedDescription)")
                 return
             }
-            print("DEBUG: Successfully uploaded user profilePhoto")
             
             // Get the URL for this image
             storageRef.downloadURL { (url, _) in
@@ -82,6 +85,7 @@ class AuthViewModel: ObservableObject {
                     // Store this user in our "user" collection in Firestore along with it's properties
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                         self.userSession = user
+                        self.fetchUser()
                     }
                 }
             }
@@ -91,11 +95,13 @@ class AuthViewModel: ObservableObject {
     // Log out
     func signOut() {
         userSession = nil
+        user = nil
         try? Auth.auth().signOut()
     }
     
-    // MARK: - Methods
+    // MARK: - Other Methods
     
+    // Fetching the user from Firestore
     func fetchUser() {
         guard let uid = userSession?.uid else { return }
         
@@ -112,9 +118,7 @@ class AuthViewModel: ObservableObject {
             }
             
             guard let data = snapshot?.data() else { return }
-            
-            let user = User(dictionary: data)
-            print("DEBUG: User is \(user.username)")
+            self.user = User(dictionary: data)
         }
     }
 }
