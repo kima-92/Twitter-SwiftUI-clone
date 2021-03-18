@@ -20,10 +20,12 @@ struct FeedView: View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 // LazyVStack - Loads cell as needed, not all at once
-                VStack {
-                    // Displaying a certain amount of Views
+                LazyVStack {
+                    // Displaying each tweetCell
                     ForEach(viewModel.tweets) { tweet in
-                        TweetCell(tweet: tweet)
+                        NavigationLink(destination: TweetDetailView()) {
+                            TweetCell(tweet: tweet)
+                        }
                     }
                 }
             }
