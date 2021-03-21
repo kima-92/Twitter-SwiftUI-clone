@@ -70,7 +70,7 @@ struct TweetDetailView: View {
             Divider()
             
             // Bottom buttons
-            TweetActionsView()
+            TweetActionsView(tweet: tweet)
             Spacer()
         }.padding()
     }
