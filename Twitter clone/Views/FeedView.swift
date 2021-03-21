@@ -23,7 +23,7 @@ struct FeedView: View {
                 LazyVStack {
                     // Displaying each tweetCell
                     ForEach(viewModel.tweets) { tweet in
-                        NavigationLink(destination: TweetDetailView()) {
+                        NavigationLink(destination: TweetDetailView(tweet: tweet)) {
                             TweetCell(tweet: tweet)
                         }
                     }

@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TweetDetailView: View {
+    
+    // MARK: - Properties
+    
+    let tweet: Tweet
+    
+    // MARK: - Body
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             
             // Profile Image, name and username
             HStack {
-                Image("batman")
+                KFImage(URL(string: tweet.profileImageUrl))
                     .resizable()
                     .scaledToFill()
                     .clipped()
@@ -21,17 +29,17 @@ struct TweetDetailView: View {
                     .cornerRadius(28)
                 
                 VStack(alignment: .leading, spacing:4) {
-                    Text("Bruce Wayne")
+                    Text(tweet.fullname)
                         .font(.system(size: 14, weight: .semibold))
                     
-                    Text("@batman")
+                    Text("@\(tweet.username)")
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
                 }
             }
             
             // Tweet and Date
-            Text("It's not who I am underneath, but what I do that defines me")
+            Text(tweet.caption)
                 .font(.system(size: 22))
             
             Text("7:22 PM • 05/01/2020")
@@ -51,7 +59,7 @@ struct TweetDetailView: View {
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("0")
+                    Text("\(tweet.likes)")
                         .font(.system(size: 14))
                     
                     Text("Likes")
@@ -68,8 +76,8 @@ struct TweetDetailView: View {
     }
 }
 
-struct TweetDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        TweetDetailView()
-    }
-}
+//struct TweetDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TweetDetailView()
+//    }
+//}
