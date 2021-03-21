@@ -31,7 +31,7 @@ class TweetActionViewModel: ObservableObject {
         let tweetDocumentRef = COLLECTION_TWEETS.document(tweet.id)
         let userDocumentRef = COLLECTION_USERS.document(uid)
         
-        // Update the likes property of this tweet
+        // Updating only the likes property of this tweet
         tweetDocumentRef.updateData(["likes": tweet.likes + 1])
         
         // References to the "tweet-likes" and "user-likes" collections - Firebase
