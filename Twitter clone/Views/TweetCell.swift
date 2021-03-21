@@ -40,10 +40,10 @@ struct TweetCell: View {
                             .foregroundColor(.gray)
                         Text("2w")
                             .foregroundColor(.gray)
-                            .foregroundColor(.black)
                     }
                     // Tweet
                     Text(tweet.caption)
+                        .foregroundColor(.black)
                 }
             }
             .padding(.bottom)
