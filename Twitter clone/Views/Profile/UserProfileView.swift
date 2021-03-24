@@ -11,8 +11,8 @@ struct UserProfileView: View {
     
     // MARK: - Properties
     
-    @State var selectedFilter: TweetFilterOptions = .tweets
     let user: User
+    @State var selectedFilter: TweetFilterOptions = .tweets
     @ObservedObject var viewModel: ProfileViewModel
     
     // MARK: - Initializer
@@ -37,7 +37,7 @@ struct UserProfileView: View {
                     TweetCell(tweet: tweet).padding()
                 }
             }
-            .navigationTitle("batman")
+            .navigationTitle(user.username)
         }
     }
 }
