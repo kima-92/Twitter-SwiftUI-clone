@@ -46,6 +46,7 @@
 		FA9BAC8A25EDF6F700B8114B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9BAC8925EDF6F700B8114B /* FirebaseAuth */; };
 		FA9BAC8C25EDF6F700B8114B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9BAC8B25EDF6F700B8114B /* FirebaseFirestore */; };
 		FA9C0DB225EF3FBF00434324 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9C0DB125EF3FBF00434324 /* AuthViewModel.swift */; };
+		FACD814B260AD0720096EC7D /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD814A260AD0720096EC7D /* LazyView.swift */; };
 		FAD987A925BCEE1C00AA91FD /* Twitter_cloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD987A825BCEE1C00AA91FD /* Twitter_cloneApp.swift */; };
 		FAD987AB25BCEE1C00AA91FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD987AA25BCEE1C00AA91FD /* ContentView.swift */; };
 		FAD987AD25BCEE1F00AA91FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD987AC25BCEE1F00AA91FD /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		FA9194652606F1DC0033702E /* TweetActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetActionViewModel.swift; sourceTree = "<group>"; };
 		FA9BAC8125EDF55E00B8114B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9C0DB125EF3FBF00434324 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		FACD814A260AD0720096EC7D /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		FAD987A525BCEE1C00AA91FD /* Twitter clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD987A825BCEE1C00AA91FD /* Twitter_cloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twitter_cloneApp.swift; sourceTree = "<group>"; };
 		FAD987AA25BCEE1C00AA91FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				FA76494425E490BB00471C35 /* TextArea.swift */,
 				FA00B4A425E5D403006C21AB /* CustomTextField.swift */,
 				FA00B4A725E6D663006C21AB /* CustomSecureField.swift */,
+				FACD814A260AD0720096EC7D /* LazyView.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				FAD987AB25BCEE1C00AA91FD /* ContentView.swift in Sources */,
 				FA00B4AB25E955B8006C21AB /* ImagePicker.swift in Sources */,
 				FAFF80C325BD017D0013E2AA /* FeedView.swift in Sources */,
+				FACD814B260AD0720096EC7D /* LazyView.swift in Sources */,
 				FA76494A25E496D300471C35 /* LoginView.swift in Sources */,
 				FA79445825F800EA00E8D408 /* SearchViewModel.swift in Sources */,
 				FA7C5C4A2603E53F00CC1373 /* TweetDetailView.swift in Sources */,
