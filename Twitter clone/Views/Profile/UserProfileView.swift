@@ -33,7 +33,7 @@ struct UserProfileView: View {
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
                 
-                ForEach(viewModel.userTweets) { tweet in
+                ForEach(viewModel.likedTweets) { tweet in
                     TweetCell(tweet: tweet).padding()
                 }
             }

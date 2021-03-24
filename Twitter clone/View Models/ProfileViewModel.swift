@@ -86,10 +86,7 @@ class ProfileViewModel: ObservableObject {
         // Create a Tweet object for each one and store them in userTweets
         tweets.getDocuments { querySnapshot, error in
             guard let documents = querySnapshot?.documents else { return }
-            documents.forEach { (document) in
-//                print("DEBUG: Doc data is \(document.data())")
-            }
-        }
+            self.userTweets = documents.map({ Tweet(dictionary: $0.data() )})        }
     }
     
     // Fetch tweets liked by this profile's user
@@ -113,8 +110,11 @@ class ProfileViewModel: ObservableObject {
                     
                     guard let data = snapshot?.data() else { return }
                     let tweet = Tweet(dictionary: data)
+                    tweets.append(tweet)
                     
-                    print("DEBUG: Liked tweet is \(tweet)")
+                    // Save likedTweets after ALL tweets have been fetched
+                    guard tweets.count == tweetsIDs.count else { return }
+                    self.likedTweets = tweets
                 }
             }
         }
