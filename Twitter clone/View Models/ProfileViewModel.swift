@@ -14,12 +14,16 @@ class ProfileViewModel: ObservableObject {
     
     let user: User
     @Published var isFollowed = false
+    @Published var userTweets = [Tweet]()
+    @Published var likedTweets = [Tweet]()
     
     // MARK: - Initializer
     
     init(user: User) {
         self.user = user
         checkIfUserIsFollowed()
+        fetchUserTweets()
+        fetchLikedTweets()
     }
     
     // MARK: - Methods
@@ -68,6 +72,37 @@ class ProfileViewModel: ObservableObject {
         followingCollectionRef.document(user.id).getDocument { documentSnapshot, error in
             guard let isFollowed = documentSnapshot?.exists else { return }
             self.isFollowed = isFollowed
+        }
+    }
+    
+    func fetchUserTweets() {
+        let tweets = COLLECTION_TWEETS.whereField("uid", isEqualTo: user.id)
+        
+        tweets.getDocuments { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else { return }
+            documents.forEach { (document) in
+//                print("DEBUG: Doc data is \(document.data())")
+            }
+        }
+    }
+    
+    func fetchLikedTweets() {
+        let user = COLLECTION_USERS.document(self.user.id)
+        let userLikesRef = user.collection("user-likes")
+        
+        userLikesRef.getDocuments { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else { return }
+            let tweetsIDs = documents.map({ $0.documentID })
+            
+            tweetsIDs.forEach { id in
+                let tweetDocumentReference = COLLECTION_TWEETS.document(id)
+                tweetDocumentReference.getDocument { snapshot, error in
+                    guard let data = snapshot?.data() else { return }
+                    let tweet = Tweet(dictionary: data)
+                    
+                    print("DEBUG: Liked tweet is \(tweet)")
+                }
+            }
         }
     }
 }
