@@ -119,6 +119,20 @@ class ProfileViewModel: ObservableObject {
             }
         }
     }
+    
+    // Return array of tweets based on filter option
+    func tweets(forFilter filter: TweetFilterOptions) -> [Tweet] {
+        
+        switch filter {
+        
+        case .tweets:
+            return userTweets
+        case .replies:
+            return []  // TODO: - Replies are not yet implemented at all
+        case .likes:
+            return likedTweets
+        }
+    }
 }
 
 /*

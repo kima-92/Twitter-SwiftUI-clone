@@ -64,10 +64,6 @@ struct ProfileHeaderView: View {
             
             // Edit/Follow/Message buttons - Based on user type
             ProfileActionButtonView(viewModel: viewModel, isFollowed: $isFollowed)
-            
-            // TODO: - Check if you trully need the FilterButtonView here
-            //            FilterButtonView(selectedOption: $selectedFilter).padding()
-            
             Spacer()
         }
     }
