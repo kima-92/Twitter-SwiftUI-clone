@@ -33,8 +33,8 @@ struct UserProfileView: View {
                 FilterButtonView(selectedOption: $selectedFilter)
                     .padding()
                 
-                ForEach(0..<9) { tweet in
-//                    TweetCell().padding()
+                ForEach(viewModel.userTweets) { tweet in
+                    TweetCell(tweet: tweet).padding()
                 }
             }
             .navigationTitle("batman")

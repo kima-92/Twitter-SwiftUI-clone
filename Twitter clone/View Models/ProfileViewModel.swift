@@ -26,7 +26,7 @@ class ProfileViewModel: ObservableObject {
         fetchLikedTweets()
     }
     
-    // MARK: - Methods
+    // MARK: - Following user Methods
     
     // Follow this profile's user
     func follow() {
@@ -75,9 +75,15 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Fetching Tweets Methods
+    
+    // Fetch this profile user's tweets
     func fetchUserTweets() {
+        
+        // Fetch all tweets from the tweets collection that have this profile user's ID as the uid property
         let tweets = COLLECTION_TWEETS.whereField("uid", isEqualTo: user.id)
         
+        // Create a Tweet object for each one and store them in userTweets
         tweets.getDocuments { querySnapshot, error in
             guard let documents = querySnapshot?.documents else { return }
             documents.forEach { (document) in
@@ -86,17 +92,25 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+    // Fetch tweets liked by this profile's user
     func fetchLikedTweets() {
+        
+        var tweets = [Tweet]()
+        
+        // Get this profile user's "user-likes" collection
         let user = COLLECTION_USERS.document(self.user.id)
         let userLikesRef = user.collection("user-likes")
         
+        // Get all the tweet ID's from that collection
         userLikesRef.getDocuments { querySnapshot, error in
             guard let documents = querySnapshot?.documents else { return }
             let tweetsIDs = documents.map({ $0.documentID })
             
+            // Create a tweet object for each tweetID
             tweetsIDs.forEach { id in
                 let tweetDocumentReference = COLLECTION_TWEETS.document(id)
                 tweetDocumentReference.getDocument { snapshot, error in
+                    
                     guard let data = snapshot?.data() else { return }
                     let tweet = Tweet(dictionary: data)
                     
