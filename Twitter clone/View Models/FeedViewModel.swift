@@ -18,7 +18,6 @@ class FeedViewModel: ObservableObject {
         COLLECTION_TWEETS.getDocuments { (snapshot, error) in
             guard let documents = snapshot?.documents else { return }
             self.tweets = documents.map({ Tweet(dictionary: $0.data()) })
-            print("DEBUG: Tweets \(self.tweets)")
         }
     }
 }

@@ -86,7 +86,8 @@ class ProfileViewModel: ObservableObject {
         // Create a Tweet object for each one and store them in userTweets
         tweets.getDocuments { querySnapshot, error in
             guard let documents = querySnapshot?.documents else { return }
-            self.userTweets = documents.map({ Tweet(dictionary: $0.data() )})        }
+            self.userTweets = documents.map({ Tweet(dictionary: $0.data() )})
+        }
     }
     
     // Fetch tweets liked by this profile's user
@@ -120,7 +121,9 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    // Return array of tweets based on filter option
+    // MARK: - Filter Method
+    
+    // Returns an array of tweets based on a filter option
     func tweets(forFilter filter: TweetFilterOptions) -> [Tweet] {
         
         switch filter {
