@@ -47,14 +47,14 @@ struct ProfileHeaderView: View {
             // Followers and Following Stack
             HStack(spacing: 40) {
                 VStack {
-                    Text("12")
+                    Text("\(viewModel.user.stats.followers)")
                         .font(.system(size: 16)).bold()
                     Text("Followers")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
                 VStack {
-                    Text("12")
+                    Text("\(viewModel.user.stats.following)")
                         .font(.system(size: 16)).bold()
                     Text("Following")
                         .font(.footnote)

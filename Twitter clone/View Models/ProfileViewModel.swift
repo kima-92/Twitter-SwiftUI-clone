@@ -12,7 +12,7 @@ class ProfileViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    let user: User
+    @Published var user: User
     @Published var isFollowed = false
     @Published var userTweets = [Tweet]()
     @Published var likedTweets = [Tweet]()
@@ -24,7 +24,29 @@ class ProfileViewModel: ObservableObject {
         checkIfUserIsFollowed()
         fetchUserTweets()
         fetchLikedTweets()
+        fetchUserStats()
     }
+    
+    // MARK: - Helper Methods
+    
+    // Returns an array of tweets based on a filter option
+    func tweets(forFilter filter: TweetFilterOptions) -> [Tweet] {
+        
+        switch filter {
+        
+        case .tweets:
+            return userTweets
+        case .replies:
+            return []  // TODO: - Replies are not yet implemented at all
+        case .likes:
+            return likedTweets
+        }
+    }
+}
+
+// MARK: - API Extension
+
+extension ProfileViewModel {
     
     // MARK: - Following user Methods
     
@@ -121,19 +143,22 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Filter Method
-    
-    // Returns an array of tweets based on a filter option
-    func tweets(forFilter filter: TweetFilterOptions) -> [Tweet] {
+    // Fetch followers/following count
+    func fetchUserStats() {
         
-        switch filter {
+        // Get the "user-followers" and "user-following" collections for this profile's user
+        let followersCollectionRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
+        let followingCollectionRef = COLLECTION_FOLLOWING.document(user.id).collection("user-following")
         
-        case .tweets:
-            return userTweets
-        case .replies:
-            return []  // TODO: - Replies are not yet implemented at all
-        case .likes:
-            return likedTweets
+        // Update the profile user's stats with count of documents in each collection
+        followersCollectionRef.getDocuments { querySnapshot, error in
+            guard let followersCount = querySnapshot?.documents.count else { return }
+            
+            followingCollectionRef.getDocuments { snapshot, error in
+                guard let followingCount = snapshot?.documents.count else { return }
+                
+                self.user.stats = UserStats(followers: followersCount, following: followingCount)
+            }
         }
     }
 }
