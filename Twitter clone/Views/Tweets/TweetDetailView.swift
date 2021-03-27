@@ -75,9 +75,3 @@ struct TweetDetailView: View {
         }.padding()
     }
 }
-
-//struct TweetDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TweetDetailView()
-//    }
-//}

@@ -57,9 +57,3 @@ struct TweetCell: View {
         .padding(.leading, -16)
     }
 }
-
-//struct TweetCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TweetCell()
-//    }
-//}
