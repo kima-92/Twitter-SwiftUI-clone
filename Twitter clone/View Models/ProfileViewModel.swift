@@ -13,7 +13,6 @@ class ProfileViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var user: User
-    @Published var isFollowed = false
     @Published var userTweets = [Tweet]()
     @Published var likedTweets = [Tweet]()
     
@@ -62,7 +61,7 @@ extension ProfileViewModel {
         // Creating user document inside corresponding collections
         followingCollectionRef.document(user.id).setData([:]) { error in
             followersCollectionRef.document(currentUid).setData([:]) { error in
-                self.isFollowed = true
+                self.user.isFollowed = true
             }
         }
     }
@@ -79,21 +78,22 @@ extension ProfileViewModel {
         // Deleting user document from corresponding collections
         followingCollectionRef.document(user.id).delete() { error in
             followersCollectionRef.document(currentUid).delete { error in
-                self.isFollowed = false
+                self.user.isFollowed = false
             }
         }
     }
     
     // Check if this profile's user is being followed by the current user
     private func checkIfUserIsFollowed() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        guard let currentUid = Auth.auth().currentUser?.uid,
+              !user.isCurrentUser else { return }
         
         // Reference to the current user's following collection in Firebase
         let followingCollectionRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
         
         followingCollectionRef.document(user.id).getDocument { documentSnapshot, error in
             guard let isFollowed = documentSnapshot?.exists else { return }
-            self.isFollowed = isFollowed
+            self.user.isFollowed = isFollowed
         }
     }
     

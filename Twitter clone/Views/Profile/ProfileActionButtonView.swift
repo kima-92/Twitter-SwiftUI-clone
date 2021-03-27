@@ -11,8 +11,7 @@ struct ProfileActionButtonView: View {
     
     // MARK: - Properties
     
-    let viewModel: ProfileViewModel
-    @Binding var isFollowed: Bool
+    @ObservedObject var viewModel: ProfileViewModel
     
     // MARK: - Body
     
@@ -36,9 +35,9 @@ struct ProfileActionButtonView: View {
                 
                 // Follow/Unfollow Button
                 Button(action: {
-                    isFollowed ? viewModel.unfollow() : viewModel.follow()
+                    viewModel.user.isFollowed ? viewModel.unfollow() : viewModel.follow()
                 }, label: {
-                    Text(isFollowed ? "Following" : "Follow")
+                    Text(viewModel.user.isFollowed ? "Following" : "Follow")
                         .frame(width: 180, height: 40)
                         .background(Color.blue)
                         .foregroundColor(.white)
@@ -58,6 +57,6 @@ struct ProfileActionButtonView: View {
 
 struct ProfileActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileActionButtonView(viewModel: ProfileViewModel(user: User(dictionary: [:])), isFollowed: Binding.constant(true))
+        ProfileActionButtonView(viewModel: ProfileViewModel(user: User(dictionary: [:])))
     }
 }

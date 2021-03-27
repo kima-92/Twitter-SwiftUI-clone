@@ -15,6 +15,7 @@ struct User: Identifiable {
     let email: String
     var stats: UserStats
     
+    var isFollowed = false
     var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == self.id }
     
     init(dictionary: [String: Any]) {

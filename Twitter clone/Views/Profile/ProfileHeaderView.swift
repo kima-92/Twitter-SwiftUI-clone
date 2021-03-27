@@ -12,8 +12,7 @@ struct ProfileHeaderView: View {
     
     // MARK: - Properties
     
-    let viewModel: ProfileViewModel
-    @Binding var isFollowed: Bool
+    @ObservedObject var viewModel: ProfileViewModel
     
     // TODO: - Check if you trully need this state variable here
     //    @State var selectedFilter: TweetFilterOptions = .tweets
@@ -63,7 +62,7 @@ struct ProfileHeaderView: View {
             }.padding()
             
             // Edit/Follow/Message buttons - Based on user type
-            ProfileActionButtonView(viewModel: viewModel, isFollowed: $isFollowed)
+            ProfileActionButtonView(viewModel: viewModel)
             Spacer()
         }
     }
