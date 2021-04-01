@@ -44,12 +44,12 @@ struct ProfileActionButtonView: View {
                 }).cornerRadius(20)
                 
                 // Message Button
-                Button(action: {}, label: {
+                NavigationLink(destination: ChatView()) {
                     Text("Message")
                         .frame(width: 180, height: 40)
                         .background(Color.purple)
                         .foregroundColor(.white)
-                }).cornerRadius(20)
+                }.cornerRadius(20)
             }
         }
     }

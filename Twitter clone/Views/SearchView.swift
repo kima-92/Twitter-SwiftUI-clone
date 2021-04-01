@@ -23,7 +23,7 @@ struct SearchView: View {
             
             // Cells
             VStack(alignment: .leading) {
-                ForEach(viewModel.users) { user in
+                ForEach(searchText.isEmpty ? viewModel.users : viewModel.filter(searchText)) { user in
                     HStack { Spacer() }
                     NavigationLink(
                         destination: LazyView(UserProfileView(user: user)),
