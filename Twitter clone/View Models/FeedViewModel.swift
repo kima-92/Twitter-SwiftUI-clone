@@ -8,11 +8,18 @@
 import SwiftUI
 
 class FeedViewModel: ObservableObject {
+    
+    // MARK: - Properties
+    
     @Published var tweets = [Tweet]()
+    
+    // MARK: - Init
     
     init() {
         fetchTweets()
     }
+    
+    // MARK: - Methods
     
     func fetchTweets() {
         COLLECTION_TWEETS.getDocuments { (snapshot, error) in
